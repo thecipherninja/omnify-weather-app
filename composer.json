@@ -1,0 +1,5 @@
+{
+    "require": {
+        "inertiajs/inertia-laravel": "^0.6.9"
+    }
+}
