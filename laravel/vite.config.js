@@ -9,4 +9,11 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    resolve: {
+        alias: {
+          '@components': './resources/js/components/',
+          '@css': './resources/css/',
+          '@api': './app/Http/Controllers/',
+        },
+    },
 });
