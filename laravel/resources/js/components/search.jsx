@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { AsyncPaginate } from "react-select-async-paginate";
 import { geoApiOptions, GEO_API_URL } from "@api/api.js";
+import axios from 'axios';
 
 const Search = ({ onSearchChange }) => {
   const [search, setSearch] = useState(null);
@@ -20,23 +21,22 @@ const Search = ({ onSearchChange }) => {
             };
           }),
         };
-      });
+      })
+      .catch((err)=>console.error(err));
   };
 
-  const handleOnChange = (searchData) => {
-    setSearch(searchData);
-    onSearchChange(searchData);
+  const handleOnChange = () => async (searchData) => {
+      setSearch(searchData);
+      onSearchChange(searchData);
   };
 
   return (
-    <div>
         <AsyncPaginate 
             placeholder="Search for city"
             debounceTimeout={600}
             value={search}
             onChange={handleOnChange}
             loadOptions={loadOptions} />
-    </div>
   );
 };
 
